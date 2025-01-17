@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crocodile Facts</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+            color: #333;
+        }
+
+        #app {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #007BFF;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            margin-bottom: 20px;
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        li:last-child {
+            border-bottom: none;
+        }
+
+        .fact-title {
+            font-weight: bold;
+            color: #007BFF;
+        }
+
+        .fact-description {
+            margin-top: 5px;
+        }
+
+        #replace-button {
+            display: block;
+            margin: 20px auto;
+            padding: 10px 20px;
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        #replace-button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <h1>Crocodile Facts</h1>
+        <ul id="facts-list"></ul>
+        <button id="replace-button">Replace Facts</button>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const factsList = document.getElementById('facts-list');
+            const replaceButton = document.getElementById('replace-button');
+
+            const factsSet1 = [
+                {
+                    fact: "Ancient Lineage",
+                    description: "Crocodiles have been around for over 200 million years, making them one of the oldest living reptiles, having survived the extinction event that wiped out the dinosaurs."
+                },
+                {
+                    fact: "Habitat",
+                    description: "They are typically found in freshwater habitats like rivers, lakes, wetlands, and sometimes in brackish water. Some species, like the saltwater crocodile, can also be found in coastal areas."
+                },
+                {
+                    fact: "Size",
+                    description: "The saltwater crocodile is the largest living reptile, with males reaching lengths of up to 23 feet (7 meters) and weighing over 2,200 pounds (1,000 kg)."
+                },
+                {
+                    fact: "Diet",
+                    description: "Crocodiles are carnivorous and have a varied diet that includes fish, birds, mammals, and occasionally smaller crocodiles. They are known for their powerful jaws and sharp teeth."
+                },
+                {
+                    fact: "Hunting Technique",
+                    description: "They are ambush predators, often lying in wait for prey to come close before launching a surprise attack. Their eyes, ears, and nostrils are located on top of their heads, allowing them to see and breathe while mostly submerged."
+                }
+            ];
+
+            const factsSet2 = [
+                {
+                    fact: "Temperature-Dependent Sex Determination",
+                    description: "The sex of crocodile hatchlings is determined by the temperature of the nest. Warmer temperatures tend to produce males, while cooler temperatures produce females."
+                },
+                {
+                    fact: "Communication",
+                    description: "Crocodiles communicate through vocalizations, such as growls, hisses, and roars. Hatchlings can make noises even before they hatch to alert the mother to dig them out of the nest."
+                },
+                {
+                    fact: "Parental Care",
+                    description: "Unlike many reptiles, female crocodiles exhibit parental care. They guard their nests and assist hatchlings in reaching the water after they emerge."
+                },
+                {
+                    fact: "Longevity",
+                    description: "Crocodiles can live for several decades, with some species living up to 70 years or more in the wild."
+                },
+                {
+                    fact: "Conservation Status",
+                    description: "Many crocodile species are threatened or endangered due to habitat loss, poaching, and illegal hunting for their skin and meat. Conservation efforts are in place to protect these ancient reptiles."
+                }
+            ];
+
+            let currentFacts = factsSet1;
+
+            function displayFacts(facts) {
+                factsList.innerHTML = '';
+                facts.forEach(fact => {
+                    const listItem = document.createElement('li');
+                    listItem.innerHTML = `<div class="fact-title">${fact.fact}</div><div class="fact-description">${fact.description}</div>`;
+                    factsList.appendChild(listItem);
+                });
+            }
+
+            replaceButton.addEventListener('click', () => {
+                currentFacts = currentFacts === factsSet1 ? factsSet2 : factsSet1;
+                displayFacts(currentFacts);
+            });
+
+            displayFacts(currentFacts);
+        });
+    </script>
+</body>
+</html>
